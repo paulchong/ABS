@@ -85,6 +85,32 @@ public class SystemManager
             System.out.printf("The flight %s does not exist.\n\n",flID);
     }
 
+    // THIS IS NEW CODE!!
+
+    //Creates a FlightSection
+    public void createSection(String air, String flID, int rows, String seatClass){
+        if(airline.isEmpty() == true){
+            System.out.println("ERROR:"+"Cannot add a section, airline does not exist");
+        }
+        else {
+            boolean airlineNotFound = true;
+            // First, find airline
+
+            for (int i=0; i<airline.size();i++){
+                if(airline.get(i).getName().equals(air)){
+                    airlineNotFound = false;
+
+                    airline.get(i).addSection(flID, rows, seatClass);
+                }
+            }
+            if (airlineNotFound) System.out.println("ERROR: Cannot add a section, "
+                    + air + " airline does not exist");
+        }
+    }
+
+    // THIS IS WHERE NEW CODE ENDS!!
+
+
     //find flight
     public void findAvailableFlights(String orig, String dest)
     {

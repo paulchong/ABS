@@ -74,12 +74,12 @@ public class ClientProg
 
 //create seats
         res.createSeats("DELTA", "123", 40);
-        res.createSeats("HNAIR", "7842", 25);//invalid-7842 not created
+//        res.createSeats("HNAIR", "7842", 25);//invalid-7842 not created
         res.createSeats("WSJET", "3867", 36);
 
 //Create sections
         res.createSeats("JET","123", 2);
-//        res.createSection("JET","123", 2, 2, SeatClass.economy);
+        res.createSection("JET","123", 2, "economy");
 //        res.createSection("JET","123", 1, 3, SeatClass.economy);
 //        res.createSection("JET","123", 2, 3, SeatClass.first);
 //        res.createSection("DELTA","123", 1, 1, SeatClass.business);
@@ -90,8 +90,8 @@ public class ClientProg
 
 //display system details and check available flights
         System.out.println("SECTION 2");
-        res.displaySystemDetails();
-        res.findAvailableFlights("DEN", "LON");
+//        res.displaySystemDetails();
+//        res.findAvailableFlights("DEN", "LON");
 
 
 //book seats
@@ -106,64 +106,50 @@ public class ClientProg
 //        res.bookSeat("DELTA", "123", SeatClass.business, 1, ’A’); // already booked
 
 //Rechecking system system details after flights are booked
-        res.displaySystemDetails();
-        res.findAvailableFlights("DEN", "LON");
+//        res.displaySystemDetails();
+//        res.findAvailableFlights("DEN", "LON");
     }
 }
 
 /*
-BACK:
-1.  update the createSeat method to be createSection
-    1.1:  DATE ADDED
-    1.2: add checks for whether date and seat are available.  could simplify and only include flight-date as an instance.  don't need to reuse flight numbers.
-    1.3: print out date along with other information on a flight
-2.  update createFlight arguments
-3.  update bookSeat arguments (need to add a SeatClass to createSection() and Flight object.  this should be an enum type)
-4.  update findAvailableFlights method to include date parameter
-*/
-
-
-
-
-
-
-/*
-output
-
-The name of airport R34 should be only three alphabetic characters.
-The name of airport BEIJING should be only three alphabetic characters.
-The name of airport 123 should be only three alphabetic characters.
+The name of airport DE should be only three alphabetic characters.
+The Airport DEN has already been created.
+The name of airport TRIord9 should be only three alphabetic characters.
+The Airport DEN has already been created.
+The Airline DELTA has already been created.
+The Airline AMER has already been created.
 The name of airline FRONTIER should have less than 6 characters.
-
-The flight Id 3867 for Airline AC has already been used.
-The originating and destination airport YEG cannot be the same.
-
-The flights from YHZ to JFK:
-Airline: AC Flight ID: 3867 Originating Airport: YHZ Destination Airpot: JFK Reserved seat: None
-Airline: HNAIR Flight ID: 3867 Originating Airport: YHZ Destination Airpot: JFK Reserved seat: None
-
+The flight Id 567 for Airline DELTA has already been used.
 The flight 7842 does not exist.
 
-Seat (20,N) is invaild.
+The flight 3867 does not exist.
+
+SECTION 2
 The flight does not exist.
-Seat (78,C) is invaild.
+The flight does not exist.
+The flight does not exist.
+The flight does not exist.
 
-Airports:
-Airport Name: YHZ
-Airport Name: bei
-Airport Name: JFK
-Airport Name: YYC
-Airport Name: YEG
+Process finished with exit code 0
 
-Airlines:
-Airline Name: AC
-Airline Name: CA
-Airline Name: HNAIR
-Airline Name: WSJET
 
-Flights:
-Airline: AC Flight ID: 3867 Originating Airport: YHZ Destination Airpot: JFK Reserved seat: 15C
-Airline: CA Flight ID: 567 Originating Airport: YEG Destination Airpot: YYC Reserved seat: None
-Airline: HNAIR Flight ID: 3867 Originating Airport: YHZ Destination Airpot: JFK Reserved seat: None
-Airline: WSJET Flight ID: 3867 Originating Airport: YHZ Destination Airpot: BOS Reserved seat: Not reserved
-*/
+ */
+
+/*
+The name of airport DE should be only three alphabetic characters.
+The Airport DEN has already been created.
+The name of airport TRIord9 should be only three alphabetic characters.
+The Airport DEN has already been created.
+The Airline DELTA has already been created.
+The Airline AMER has already been created.
+The name of airline FRONTIER should have less than 6 characters.
+The flight Id 567 for Airline DELTA has already been used.
+The flight 3867 does not exist.
+
+Exception in thread "main" java.lang.NullPointerException
+	at Airline.addSection(Airline.java:20)
+	at SystemManager.createSection(SystemManager.java:103)
+	at ClientProg.main(ClientProg.java:82)
+
+Process finished with exit code 1
+ */

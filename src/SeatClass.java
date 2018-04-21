@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
-public class SeatClass {
+public enum SeatClass {
+    // Enumeration group that handles valid FlightSection
+    // input values.
+    first, business, economy;
 }

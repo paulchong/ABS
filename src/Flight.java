@@ -1,3 +1,5 @@
+import java.util.List; // NEW CODE
+
 public class Flight
 {
     private String line;
@@ -7,6 +9,10 @@ public class Flight
     private int year;
     private int month;
     private int day;
+
+    //NEW CODE
+    private List<FlightSection> Sections;
+
 
     //constructor
     public Flight(String l, String o, String d, int y, int m, int da, String id)
@@ -87,6 +93,25 @@ public class Flight
             for (int j = 0; j < 6; j++)
                 seat[i][j] = new Seat(i, (char)(j + 65));
     }
+
+    // NEW CODE !!!!
+    public void addSection(int rows, String seatClass){
+        Sections.add(new FlightSection(rows, seatClass));
+    }
+
+    public int checkSectionExists (String sc){
+        // Returns -1 if section does not exist
+        for (int i = 0; i < Sections.size(); i++){
+            String temp = Sections.get(i).getSeatClass();
+            if (temp.equals(sc))
+                return i;
+        }
+        return -1;
+    }
+
+    // NEW CODE ENDS!!!!
+
+
 
     public void bookSeat(int row, char col)
     {
