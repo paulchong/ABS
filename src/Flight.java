@@ -1,17 +1,21 @@
+import java.util.ArrayList;
 import java.util.List; // NEW CODE
 
 public class Flight
 {
     private String line;
     private String id;
-    private Seat[][] seat;
+    private Seat[][] seat; // should remove this
     private String orig, dest;
     private int year;
     private int month;
     private int day;
 
     //NEW CODE
+//    private ArrayList<FlightSection> Sections;
+
     private List<FlightSection> Sections;
+
 
 
     //constructor
@@ -24,6 +28,7 @@ public class Flight
         year = y;
         month = m;
         day = da;
+        Sections = new ArrayList<>();
     }
 
     //set and get methods
@@ -108,6 +113,25 @@ public class Flight
         }
         return -1;
     }
+
+
+    public void output(){
+        System.out.println("     Flight " + id + " from "
+                +orig+" to "+ dest +" on the date "+month+"."
+                +day+"."+year+" Seats available: ");
+        for (int i = 0; i < Sections.size(); i++){
+            int totalSeats = (Sections.get(i).getNumCols() *
+                    (Sections.get(i).getNumRows()));
+            System.out.println("          "+Sections.get(i).getSeatClass() + " class: "
+                    + Sections.get(i).numOfFreeSeats() +
+                    " out of " + totalSeats +
+                    " seats available ");
+        }
+        System.out.println(""); //will say if there are seats available or not
+    }
+
+
+
 
     // NEW CODE ENDS!!!!
 

@@ -79,7 +79,7 @@ public class ClientProg
 
 //Create sections
         res.createSeats("JET","123", 2);
-        res.createSection("JET","123", 2, "economy");
+        res.createSection("JET","123", 5, "economy");
 //        res.createSection("JET","123", 1, 3, SeatClass.economy);
 //        res.createSection("JET","123", 2, 3, SeatClass.first);
 //        res.createSection("DELTA","123", 1, 1, SeatClass.business);
@@ -90,7 +90,7 @@ public class ClientProg
 
 //display system details and check available flights
         System.out.println("SECTION 2");
-//        res.displaySystemDetails();
+        res.displaySystemDetails();
 //        res.findAvailableFlights("DEN", "LON");
 
 

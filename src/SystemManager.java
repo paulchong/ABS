@@ -96,11 +96,11 @@ public class SystemManager
             boolean airlineNotFound = true;
             // First, find airline
 
-            for (int i=0; i<airline.size();i++){
-                if(airline.get(i).getName().equals(air)){
+            for (int i=0; i<flight.size();i++){
+                if(flight.get(i).getId().equals(flID)){
                     airlineNotFound = false;
 
-                    airline.get(i).addSection(flID, rows, seatClass);
+                    flight.get(i).addSection(rows, seatClass);
                 }
             }
             if (airlineNotFound) System.out.println("ERROR: Cannot add a section, "
@@ -142,7 +142,7 @@ public class SystemManager
 
     public void displaySystemDetails()
     {
-        System.out.println("\nAirports:");
+/*        System.out.println("\nAirports:");
         for (int i = 0; i < airport.size(); i++)
             System.out.println(airport.get(i));
         System.out.println("\nAirlines:");
@@ -153,7 +153,10 @@ public class SystemManager
             System.out.println(flight.get(i));
         System.out.println("\nSections:");
         for (int i = 0; i < flight.size(); i++)
+            System.out.println(flight.get(i)); */
+        for (int i = 0; i < flight.size(); i++)
             System.out.println(flight.get(i));
-
+        for (int i = 0; i < flight.size(); i++)
+            flight.get(i).output();
     }
 }

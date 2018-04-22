@@ -9,11 +9,6 @@ public class FlightSection {
     private int tRows; // 100 Max
     private int tCol = 10;  // 10 Max
 
-    public String getSeatClass(){
-        return seatClass;
-    }
-
-
     //constructor
     public FlightSection (int rows, String seatClass){
         this.seatClass = seatClass;
@@ -32,4 +27,28 @@ public class FlightSection {
             }
         }
     }
+
+    public int numOfFreeSeats(){
+        // Returns the total number of available seats
+        int total = 0;
+        for (int i = 0; i < tRows; i++){
+            for (int j = 0; j < tCol; j++){
+                if (seatArray[i][j].getStatus() == false) total++;
+            }
+        }
+        return total;
+    }
+
+    public String getSeatClass(){
+        return seatClass;
+    }
+
+    public int getNumRows(){
+        return tRows;
+    }
+
+    public int getNumCols(){
+        return tCol;
+    }
+
 }
