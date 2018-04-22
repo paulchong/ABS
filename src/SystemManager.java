@@ -72,19 +72,6 @@ public class SystemManager
             flight.add(new Flight(aname,orig,dest,year,month,day,id));
     }
 
-    //create seat
-    public void createSeats(String air, String flID, int rows)
-    {
-        boolean check = true;
-        for(int j=0;j<flight.size()&& check;j++)
-            if(flight.get(j).getId() == flID && flight.get(j).getLine() == air){
-                flight.get(j).createSeat(rows);
-                check = false;
-            }
-        if (check)//check if the flID is correct
-            System.out.printf("The flight %s does not exist.\n\n",flID);
-    }
-
     // THIS IS NEW CODE!!
 
     //Creates a FlightSection
@@ -108,6 +95,21 @@ public class SystemManager
         }
     }
 
+    //reserves a seat on a specific flight
+    public void bookSeat(String air, String fl, String s, int row, char col){
+        // First, find airline
+        boolean airlineNotFound = true;
+        for(int i =0; i<airline.size(); i++){
+            if(airline.get(i).getName().equals(air)){
+                airlineNotFound = false;
+                flight.get(i).bookSeat(s, row, col);
+            }
+        }
+        if (airlineNotFound) System.out.println("ERROR: Airline " +
+                air + " not found");
+    }
+
+
     // THIS IS WHERE NEW CODE ENDS!!
 
 
@@ -127,7 +129,39 @@ public class SystemManager
             System.out.println("No flight is available.");
     }
 
-    //book seat
+
+    public void displaySystemDetails()
+    {
+        System.out.println("\nAirports:");
+        for (int i = 0; i < airport.size(); i++)
+            System.out.println(airport.get(i));
+        System.out.println("\nAirlines:");
+        for (int i = 0; i < airline.size(); i++)
+            System.out.println(airline.get(i));
+        System.out.println("\nFlights:");
+        for (int i = 0; i < flight.size(); i++)
+            System.out.println(flight.get(i));
+        System.out.println("\nSections:");
+        for (int i = 0; i < flight.size(); i++)
+            flight.get(i).output();
+    }
+    /*
+    DEPRECATED CODE:
+    //create seat
+    public void createSeats(String air, String flID, int rows)
+    {
+        boolean check = true;
+        for(int j=0;j<flight.size()&& check;j++)
+            if(flight.get(j).getId() == flID && flight.get(j).getLine() == air){
+                flight.get(j).createSeat(rows);
+                check = false;
+            }
+        if (check)//check if the flID is correct
+            System.out.printf("The flight %s does not exist.\n\n",flID);
+    }
+
+
+        //book seat
     public void bookSeat(String air, String fl, int row, char col)
     {
         boolean check = true;
@@ -140,23 +174,6 @@ public class SystemManager
             System.out.println("The flight does not exist.");
     }
 
-    public void displaySystemDetails()
-    {
-/*        System.out.println("\nAirports:");
-        for (int i = 0; i < airport.size(); i++)
-            System.out.println(airport.get(i));
-        System.out.println("\nAirlines:");
-        for (int i = 0; i < airline.size(); i++)
-            System.out.println(airline.get(i));
-        System.out.println("\nFlights:");
-        for (int i = 0; i < flight.size(); i++)
-            System.out.println(flight.get(i));
-        System.out.println("\nSections:");
-        for (int i = 0; i < flight.size(); i++)
-            System.out.println(flight.get(i)); */
-        for (int i = 0; i < flight.size(); i++)
-            System.out.println(flight.get(i));
-        for (int i = 0; i < flight.size(); i++)
-            flight.get(i).output();
-    }
+    */
+
 }

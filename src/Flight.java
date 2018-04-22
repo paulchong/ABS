@@ -114,6 +114,19 @@ public class Flight
         return -1;
     }
 
+    public void bookSeat (String sec, int row, char col){
+        boolean classNotFound = true;
+        for(int i=0; i < Sections.size(); i++){
+            if(Sections.get(i).getSeatClass().equals(sec)){
+                classNotFound = false;
+                Sections.get(i).bookSeat(row, col);
+            }
+        }
+        if (classNotFound) System.out.println("ERROR: Section class "
+                + sec + " not found");
+    }
+
+
 
     public void output(){
         System.out.println("     Flight " + id + " from "
@@ -136,19 +149,6 @@ public class Flight
     // NEW CODE ENDS!!!!
 
 
-
-    public void bookSeat(int row, char col)
-    {
-        if (row > seat.length || col > 70 || col < 65)
-            System.out.printf("Seat (%d,%c) is invaild.\n",row,col);
-        else{
-            if(!seat[row-1][(int)col - 65].getStatus())
-                seat[row-1][(int)col - 65].setStatus();
-            else
-                System.out.printf("Seat (%d,%c) has been reserved.\n",row,col);
-        }
-    }
-
     //toString method
     public String toString()
     {
@@ -165,4 +165,22 @@ public class Flight
             seats = "Not reserved";
         return "Airline: "+line+" Flight ID: "+id+" Originating Airport: "+orig+" Destination Airpot: "+dest+" Reserved seat: "+seats;
     }
+
+    /*
+    DEPRECATED CODE
+
+    public void bookSeat(int row, char col)
+    {
+        if (row > seat.length || col > 70 || col < 65)
+            System.out.printf("Seat (%d,%c) is invaild.\n",row,col);
+        else{
+            if(!seat[row-1][(int)col - 65].getStatus())
+                seat[row-1][(int)col - 65].setStatus();
+            else
+                System.out.printf("Seat (%d,%c) has been reserved.\n",row,col);
+        }
+    }
+
+     */
+
 }

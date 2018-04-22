@@ -28,6 +28,19 @@ public class FlightSection {
         }
     }
 
+    public void bookSeat(int row, char col){// Books the seat
+        int column;
+        column = (Character.getNumericValue(col) - 10);
+        if (seatArray[row][column].getStatus() == false) {
+            seatArray[row][column].setStatus();
+            System.out.println("Seat booked at " + (row+1) + col);
+        }
+
+        else System.out.println("ERROR: Seat at " + row + " " + col +
+                " already booked");
+    }
+
+
     public int numOfFreeSeats(){
         // Returns the total number of available seats
         int total = 0;
