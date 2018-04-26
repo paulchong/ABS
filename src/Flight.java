@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List; // NEW CODE
 
-public class Flight
+public class Flight extends Transport
 {
     private String line;
     private String id;
@@ -10,6 +10,8 @@ public class Flight
     private int year;
     private int month;
     private int day;
+    private String departureStatus;
+    private String fuel;
 
     //NEW CODE
 //    private ArrayList<FlightSection> Sections;
