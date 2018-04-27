@@ -1,7 +1,8 @@
 //Airport.java
-public class Airport
-{
+public class Airport implements Facilities {
     private String name;
+    private String longitude;
+    private String latitude;
 
     //constructor
     public Airport(String n) {
@@ -19,6 +20,10 @@ public class Airport
     public void setName(String n)
     {
         name = n;
+    }
+
+    public String getLocation(){
+        return longitude + latitude;
     }
 
     public String toString()
