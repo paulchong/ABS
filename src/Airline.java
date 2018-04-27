@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 
 
-public class Airline
+public class Airline extends Company
 {
     private String name;
     private ArrayList<Flight> flight;
