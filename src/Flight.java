@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List; // NEW CODE
 
 public class Flight extends Transport
@@ -10,6 +12,7 @@ public class Flight extends Transport
     private int year;
     private int month;
     private int day;
+    private Calendar departure;
     private String departureStatus;
     private String fuel;
 
@@ -31,6 +34,9 @@ public class Flight extends Transport
         month = m;
         day = da;
         Sections = new ArrayList<>();
+        departure = Calendar.getInstance();
+        departure.set(year, month, day, 0, 0);
+
     }
 
     //set and get methods
@@ -145,8 +151,22 @@ public class Flight extends Transport
         System.out.println(""); //will say if there are seats available or not
     }
 
+    public String getDepartureStatus(){
 
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
 
+        if (today.after(departure)){
+            departureStatus = "departed";
+        } else {
+            departureStatus = "scheduled";
+        }
+        return departureStatus;
+    }
+
+    public Calendar getDeparture(){
+        return departure;
+    }
 
     // NEW CODE ENDS!!!!
 

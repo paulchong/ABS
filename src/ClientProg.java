@@ -108,6 +108,8 @@ public class ClientProg
 //Rechecking system system details after flights are booked
         res.displaySystemDetails();
 //        res.findAvailableFlights("DEN", "LON");
+
+        res.checkDepartureStatus("123");
     }
 }
 

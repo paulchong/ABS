@@ -1,11 +1,9 @@
 public abstract class Transport {
-    private String departureStatus; //whether transport is scheduled or departed
-    private String fuel;
+    private String fuelType;
 
-    abstract String getFuelType();
-
-    public String getDepartureStatus(){
-        return departureStatus;
+    public String getFuelType(){
+        return fuelType;
     }
 
+    abstract String getDepartureStatus();
 }

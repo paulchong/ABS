@@ -80,17 +80,17 @@ public class SystemManager
             System.out.println("ERROR:"+"Cannot add a section, airline does not exist");
         }
         else {
-            boolean airlineNotFound = true;
-            // First, find airline
+            boolean flightNotFound = true;
+            // First, find flight
 
             for (int i=0; i<flight.size();i++){
                 if(flight.get(i).getId().equals(flID)){
-                    airlineNotFound = false;
+                    flightNotFound = false;
 
                     flight.get(i).addSection(rows, seatClass);
                 }
             }
-            if (airlineNotFound) System.out.println("ERROR: Cannot add a section, "
+            if (flightNotFound) System.out.println("ERROR: Cannot add a section, "
                     + air + " airline does not exist");
         }
     }
@@ -109,6 +109,19 @@ public class SystemManager
                 air + " not found");
     }
 
+    public void checkDepartureStatus(String flID){
+        boolean flightNotFound = true;
+        // First, find airline
+
+        for (int i=0; i<flight.size();i++){
+            if(flight.get(i).getId().equals(flID)){
+                flightNotFound = false;
+                System.out.println(flID + " Flight Status: "+ flight.get(i).getDepartureStatus());
+            }
+        }
+        if (flightNotFound) System.out.println("ERROR: Cannot add a section, Flight"
+                + flID + " does not exist");
+    }
 
     // THIS IS WHERE NEW CODE ENDS!!
 
