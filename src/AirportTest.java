@@ -21,7 +21,7 @@ class AirportTest {
     @org.junit.jupiter.api.Test
     void setName() {
         airport.setName("XXX");
-        Assert.assertEquals("XXX", airport.getName());
+        Assert.assertEquals("SetName Method", "XXX", airport.getName());
     }
 
     @org.junit.jupiter.api.Test

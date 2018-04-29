@@ -108,21 +108,21 @@ public class Flight extends Transport
     }
 
     // NEW CODE !!!!
-    public void addSection(int rows, String seatClass){
+    public void addSection(int rows, SeatClass seatClass){
         Sections.add(new FlightSection(rows, seatClass));
     }
 
-    public int checkSectionExists (String sc){
+    public int checkSectionExists (SeatClass sc){
         // Returns -1 if section does not exist
         for (int i = 0; i < Sections.size(); i++){
-            String temp = Sections.get(i).getSeatClass();
+            SeatClass temp = Sections.get(i).getSeatClass();
             if (temp.equals(sc))
                 return i;
         }
         return -1;
     }
 
-    public void bookSeat (String sec, int row, char col){
+    public void bookSeat (SeatClass sec, int row, char col){
         boolean classNotFound = true;
         for(int i=0; i < Sections.size(); i++){
             if(Sections.get(i).getSeatClass().equals(sec)){

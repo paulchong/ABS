@@ -79,8 +79,8 @@ public class ClientProg
 
 //Create sections
 //        res.createSection("AC","3867", 2, "business");
-        res.createSection("DELTA","123", 5, "economy");
-//        res.createSection("JET","123", 1, 3, SeatClass.economy);
+//        res.createSection("DELTA","123", 5, "economy");
+        res.createSection("JET","123", 1, SeatClass.economy);
 //        res.createSection("JET","123", 2, "first");
 //        res.createSection("DELTA","123", 1, "business");
 //        res.createSection("DELTA","123", 1, 2, SeatClass.economy);
@@ -100,7 +100,7 @@ public class ClientProg
 //        res.bookSeat("WSJET", "2671", 2, 'F'); // invalid - 2671 not created
 //        res.bookSeat("AC", "3867", 78, 'C'); // invalid - row 78 doesn't exist
 
-        res.bookSeat("DELTA", "123", "economy", 1, 'A');
+        res.bookSeat("DELTA", "123", SeatClass.economy, 1, 'A');
 //        res.bookSeat("DELTA", "123", SeatClass.economy, 1, ’A’);
 //        res.bookSeat("DELTA", "123", SeatClass.economy, 1, ’B’);
 //        res.bookSeat("DELTA", "123", SeatClass.business, 1, ’A’); // already booked

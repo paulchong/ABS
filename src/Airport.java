@@ -28,7 +28,10 @@ public class Airport implements Facilities {
     }
     public void setName(String n)
     {
-        name = n;
+        if (n.length() != 3)
+            throw new IllegalArgumentException
+                    ("Airport name must be 3 characters long.");
+        else name = n;
     }
 
     public String getLocation(){

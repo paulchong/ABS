@@ -16,7 +16,7 @@ public class Airline extends Company
 
     // NEW CODE !!!!
     //Adds a new FlightSection to a Flight
-    public void addSection(String fid, int rows, String seatClass){
+    public void addSection(String fid, int rows, SeatClass seatClass){
         if(false){
             System.out.println("ERROR: There are no flights "
                     + "associated with this Airline");

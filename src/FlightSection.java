@@ -1,7 +1,7 @@
 public class FlightSection {
 
     private Seat[][] seatArray;
-    private String seatClass; // first, business or economy
+    private SeatClass seatClass; // first, business or economy
 
     private final int maxRows = 100; // Maximum number of rows
     private final int maxCols = 10; //  Maximum number of columns
@@ -10,7 +10,7 @@ public class FlightSection {
     private int tCol = 10;  // 10 Max
 
     //constructor
-    public FlightSection (int rows, String seatClass){
+    public FlightSection (int rows, SeatClass seatClass){
         this.seatClass = seatClass;
 
         if (1 <= rows && rows <= maxRows)
@@ -31,9 +31,9 @@ public class FlightSection {
     public void bookSeat(int row, char col){// Books the seat
         int column;
         column = (Character.getNumericValue(col) - 10);
-        if (seatArray[row][column].getStatus() == false) {
-            seatArray[row][column].setStatus();
-            System.out.println("Seat booked at " + (row+1) + col);
+        if (seatArray[row-1][column].getStatus() == false) {
+            seatArray[row-1][column].setStatus();
+            System.out.println("Seat booked at " + (row) + col);
         }
 
         else System.out.println("ERROR: Seat at " + row + " " + col +
@@ -52,7 +52,7 @@ public class FlightSection {
         return total;
     }
 
-    public String getSeatClass(){
+    public SeatClass getSeatClass(){
         return seatClass;
     }
 

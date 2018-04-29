@@ -75,7 +75,7 @@ public class SystemManager
     // THIS IS NEW CODE!!
 
     //Creates a FlightSection
-    public void createSection(String air, String flID, int rows, String seatClass){
+    public void createSection(String air, String flID, int rows, SeatClass seatClass){
         if(airline.isEmpty() == true){
             System.out.println("ERROR:"+"Cannot add a section, airline does not exist");
         }
@@ -96,7 +96,7 @@ public class SystemManager
     }
 
     //reserves a seat on a specific flight
-    public void bookSeat(String air, String fl, String s, int row, char col){
+    public void bookSeat(String air, String fl, SeatClass s, int row, char col){
         // First, find airline
         boolean airlineNotFound = true;
         for(int i =0; i<airline.size(); i++){
