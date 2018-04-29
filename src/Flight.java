@@ -112,14 +112,14 @@ public class Flight extends Transport
         Sections.add(new FlightSection(rows, seatClass));
     }
 
-    public int checkSectionExists (SeatClass sc){
+    public boolean checkSectionExists (SeatClass sc){
         // Returns -1 if section does not exist
         for (int i = 0; i < Sections.size(); i++){
             SeatClass temp = Sections.get(i).getSeatClass();
             if (temp.equals(sc))
-                return i;
+                return true;
         }
-        return -1;
+        return false;
     }
 
     public void bookSeat (SeatClass sec, int row, char col){

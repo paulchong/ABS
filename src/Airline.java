@@ -23,8 +23,10 @@ public class Airline extends Company
         } else{
             for(int i = 0; i < flight.size(); i++){
                 if(flight.get(i).getId().equals(fid)){
-                    // Needs updated parameters
-                    if (flight.get(i).checkSectionExists(seatClass) < 0){
+                    if (flight.get(i).checkSectionExists(seatClass)){
+                        System.out.println("ERROR: There is already a " + seatClass
+                                + " section associated with this flight");
+                    } else {
                         flight.get(i).addSection(rows, seatClass);
                     }
                 }

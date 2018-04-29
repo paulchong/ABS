@@ -58,6 +58,7 @@ public class ClientProg
 //        res.createFlight("WSJET", "YHZ", "BOS", "3867", 2018);
 
         res.createFlight("DELTA", "DEN", "LON", 2018, 10, 10, "123");
+//        res.createFlight("DELTA", "DEN", "LON", 2018, 10, 10, "123");
 /*        res.createFlight("DELTA", "DEN", "DEH", 2018, 8, 8, "567");
         res.createFlight("DELTA", "DEN", "NCE", 2019, 9, 8, "567"); // invalid
         res.createFlight("JET", "LON", "DEN", 20018, 5, 7, "123");
@@ -80,6 +81,7 @@ public class ClientProg
 //Create sections
 //        res.createSection("AC","3867", 2, "business");
 //        res.createSection("DELTA","123", 5, "economy");
+        res.createSection("JET","123", 1, SeatClass.economy);
         res.createSection("JET","123", 1, SeatClass.economy);
 //        res.createSection("JET","123", 2, "first");
 //        res.createSection("DELTA","123", 1, "business");
