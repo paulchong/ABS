@@ -12,6 +12,15 @@ public class Airport implements Facilities {
         else name = n;
     }
 
+    public Airport(String n, String lat, String lon) {
+        if (n.length() != 3)
+            throw new IllegalArgumentException
+                    ("Airport name must be 3 characters long.");
+        else name = n;
+        latitude = lat;
+        longitude = lon;
+    }
+
     //get and set name
     public String getName()
     {
@@ -23,7 +32,7 @@ public class Airport implements Facilities {
     }
 
     public String getLocation(){
-        return longitude + latitude;
+        return longitude + " " + latitude;
     }
 
     public String toString()
