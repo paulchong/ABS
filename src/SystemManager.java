@@ -76,9 +76,9 @@ public class SystemManager
 
     //Creates a FlightSection
     public void createSection(String air, String flID, int rows, SeatClass seatClass){
-        //check that airline array isn't empty
-        if(airline.isEmpty() == true){
-            System.out.println("ERROR:"+"Cannot add a section, airline does not exist");
+        //check that airline array isn't empty and there's at least one row/seat
+        if(airline.isEmpty() == true && rows < 0){
+            System.out.println("ERROR:"+"Cannot add a section, airline does not exist or at least one row must be added");
         }
         else {
             boolean flightNotFound = true;
