@@ -69,15 +69,15 @@ public class Flight extends Transport
     public int getDay() { return day; }
 
     public void addSection(int rows, int cols, SeatClass seatClass){
-        boolean classAlreadyExists = true;
+        boolean classNotFound = true;
         for(int i=0; i < sections.size(); i++){
             if(sections.get(i).getSeatClass().equals(seatClass)){
-                classAlreadyExists = false;
-                sections.add(new FlightSection(rows, cols, seatClass));
+                System.out.println("ERROR: Section class " + seatClass + " already exists");
+                classNotFound = false;
             }
         }
-        if (classAlreadyExists) System.out.println("ERROR: Section class "
-                + seatClass + " already exists");
+        if (classNotFound)
+            sections.add(new FlightSection(rows, cols, seatClass));
     }
 
     public void bookSeat (SeatClass seatClass, int row, char col){

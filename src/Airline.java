@@ -14,16 +14,16 @@ public class Airline extends Company
     }
 
     public void addFlight(String orig, String dest, int year, int month, int day, String flightId){
-        // need to add validator for the code string - Alphanumeric characters, flight al
-        boolean flightAlreadyExists = true;
+        // TO DO: need to add validator for the code string - Alphanumeric characters, flight al
+        boolean flightNotFound = true;
         for(int i=0; i < flights.size(); i++){
             if(flights.get(i).getId().equals(flightId)){
-                flightAlreadyExists = false;
-                flights.add(new Flight(orig, dest, year, month, day, flightId));
+                flightNotFound = false;
+                System.out.println("ERROR: Flight " + flightId + " already exists");
             }
         }
-        if (flightAlreadyExists) System.out.println("ERROR: Flight "
-                + flightId + " already exists");
+        if (flightNotFound)
+            flights.add(new Flight(orig, dest, year, month, day, flightId));
     }
 
     //Adds a new FlightSection to a Flight

@@ -32,11 +32,11 @@ public class FlightSection {
         int column;
         column = (Character.getNumericValue(col) - 10);
         if (seatArray[row-1][column].getStatus()) {
-            seatArray[row-1][column].setStatus();
-            System.out.println("Seat booked at " + row + col);
-        } else {
             System.out.println("ERROR: Seat at " + row + " " + col +
                     " is already booked");
+        } else {
+            seatArray[row-1][column].setStatus();
+            System.out.println("Seat booked at " + row + col);
         }
     }
 

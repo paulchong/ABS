@@ -51,7 +51,7 @@ public class SystemManager
 
         }
     }
-    // REFACTOR TO REUSE AIRLINE NOT FOUND
+
     //create flight
     public void createFlight(String aname, String orig, String dest, int year, int month, int day, String id)
     {
@@ -83,12 +83,12 @@ public class SystemManager
                     + air + " not found");
      }
 
-    public void bookSeat(String air, String fl, SeatClass sc, int row, char col) {
+    public void bookSeat(String air, String fl, SeatClass s, int row, char col) {
         boolean airlineNotFound = true;
         for (int i = 0; i < airline.size(); i++) {
             if (airline.get(i).getName().equals(air)) {
                 airlineNotFound = false;
-                airline.get(i).bookSeat(fl, sc, row, col);
+                airline.get(i).bookSeat(fl, s, row, col);
             }
         }
         if (airlineNotFound) System.out.println("ERROR: Airline "
@@ -110,6 +110,23 @@ public class SystemManager
 //        for (int i = 0; i < flight.size(); i++)
 //            flight.get(i).output();
     }
+
+    // NEED TO REFACTOR THIS.
+    //find flight
+//    public void findAvailableFlights(String orig, String dest)
+//    {
+//        int count=0;
+//        System.out.println("\nThe flights from " + orig + " to " + dest + ":");
+//
+//        for(int i=0; i<flight.size(); i++)
+//            if (flight.get(i).getOrig()== orig && flight.get(i).getDest() == dest){
+//                System.out.println(flight.get(i));
+//                count++;
+//            }
+//        System.out.println();
+//        if(count==0)
+//            System.out.println("No flight is available.");
+//    }
 
     /*
     public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass){
