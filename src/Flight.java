@@ -135,7 +135,7 @@ public class Flight extends Transport
     }
 
 
-
+// refactor to remove excess.
     public void output(){
         System.out.println("     Flight " + id + " from "
                 +orig+" to "+ dest +" on the date "+month+"."
@@ -143,10 +143,8 @@ public class Flight extends Transport
         for (int i = 0; i < Sections.size(); i++){
             int totalSeats = (Sections.get(i).getNumCols() *
                     (Sections.get(i).getNumRows()));
-            System.out.println("          "+Sections.get(i).getSeatClass() + " class: "
-                    + Sections.get(i).numOfFreeSeats() +
-                    " out of " + totalSeats +
-                    " seats available ");
+            System.out.println("          "+Sections.get(i).getSeatClass() + " class has available seats: "
+                    + Sections.get(i).hasAvailableSeats());
         }
         System.out.println(""); //will say if there are seats available or not
     }

@@ -2,66 +2,70 @@ public class FlightSection {
 
     private Seat[][] seatArray;
     private SeatClass seatClass; // first, business or economy
-
     private final int maxRows = 100; // Maximum number of rows
     private final int maxCols = 10; //  Maximum number of columns
-
-    private int tRows; // 100 Max
-    private int tCol = 10;  // 10 Max
+    private int tRows;
+    private int tCols;
 
     //constructor
     public FlightSection (int rows, int cols, SeatClass seatClass){
         this.seatClass = seatClass;
 
-        if (1 <= rows && rows <= maxRows)
+        if (1 <= rows && rows <= maxRows && 1 <= cols && cols <= maxCols) {
             tRows = rows;
-        else
-            System.out.println("The number of Rows must be equal or less than " + maxRows);
+            tCols = cols;
+            seatArray = new Seat[tRows][tCols];
 
-        // Create the 2D array of seats
-        seatArray = new Seat[tRows][tCol];
-
-        for (int i = 0; i < tRows; i++){
-            for (int j = 0; j < tCol; j++){
-                seatArray[i][j] = new Seat(i, (char)(j + 65));
+            for (int i = 0; i < tRows; i++){
+                for (int j = 0; j < tCols; j++){
+                    seatArray[i][j] = new Seat(i, (char)(j + 65));
+                }
             }
+        } else {
+            System.out.println("The number of Rows and Columns must be at least 1, and equal or less than "
+                    + maxRows + " and " + maxCols + ", respectively");
         }
     }
 
-    public void bookSeat(int row, char col){// Books the seat
+    // Actually books the seat
+    public void bookSeat(int row, char col){
         int column;
         column = (Character.getNumericValue(col) - 10);
         if (seatArray[row-1][column].getStatus() == false) {
             seatArray[row-1][column].setStatus();
-            System.out.println("Seat booked at " + (row) + col);
+            System.out.println("Seat booked at " + row + col);
+        } else {
+            System.out.println("ERROR: Seat at " + row + " " + col +
+                    " is already booked");
         }
-
-        else System.out.println("ERROR: Seat at " + row + " " + col +
-                " already booked");
     }
 
+    // Returns true if at least one seat is available, otherwise returns false
+    public boolean hasAvailableSeats(){
+        for (int i = 0; i < tRows; i++){
+            for (int j = 0; j < tCols; j++){
+                if (seatArray[i][j].getStatus()) return true;
+            }
+        }
+        return false;
+    }
 
+    SeatClass getSeatClass() { return seatClass; }
+
+    int getNumRows() { return tRows; }
+
+    int getNumCols() { return tCols; }
+/*
+    // Returns total number of available seats
     public int numOfFreeSeats(){
-        // Returns the total number of available seats
         int total = 0;
         for (int i = 0; i < tRows; i++){
-            for (int j = 0; j < tCol; j++){
+            for (int j = 0; j < tCols; j++){
                 if (seatArray[i][j].getStatus() == false) total++;
             }
         }
         return total;
     }
-
-    public SeatClass getSeatClass(){
-        return seatClass;
-    }
-
-    public int getNumRows(){
-        return tRows;
-    }
-
-    public int getNumCols(){
-        return tCol;
-    }
+*/
 
 }
