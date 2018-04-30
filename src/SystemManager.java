@@ -4,13 +4,11 @@ public class SystemManager
 {
     private ArrayList<Airport> airport;
     private ArrayList<Airline> airline;
-    private ArrayList<Flight> flight;
 
     public SystemManager()
     {
         airport = new ArrayList <Airport>();
         airline = new ArrayList <Airline>();
-        flight = new ArrayList <Flight>();
     }
 
     //create Airport
@@ -18,7 +16,7 @@ public class SystemManager
     {
         boolean check = true;
         String pattern = "[a-zA-Z][a-zA-Z][a-zA-Z]";
-        if (!n.matches(pattern))//check pattern
+        if (!n.matches(pattern)) //check pattern
             System.out.printf("The name of airport %s should be only three alphabetic characters.\n", n);
 
         else{
@@ -53,28 +51,67 @@ public class SystemManager
 
         }
     }
-
+    // REFACTOR TO REUSE AIRLINE NOT FOUND
     //create flight
     public void createFlight(String aname, String orig, String dest, int year, int month, int day, String id)
     {
-        boolean check = true;
-        if(flight.size() != 0)//check if already been contained
-            for(int i=0; i<flight.size()&& check; i++)
-                if(flight.get(i).getId().equals(id) && flight.get(i).getLine().equals(aname)){
-                    System.out.printf("The flight Id %s for Airline %s has already been used.\n",id,aname);
-                    check = false;
-                }
         if(orig == dest){
-            check = false;
             System.out.printf("The originating and destination airport %s cannot be the same.\n",orig);
+        } else {
+            boolean airlineNotFound = true;
+            for (int i = 0; i < airline.size(); i++) {
+                if (airline.get(i).getName().equals(aname)) {
+                    airlineNotFound = false;
+                    airline.get(i).addFlight(orig, dest, year, month, day, id);
+                }
+            }
+            if (airlineNotFound) System.out.println("ERROR: Airline "
+                    + aname + " not found");
         }
-        if(check)
-            flight.add(new Flight(aname,orig,dest,year,month,day,id));
     }
 
-    // THIS IS NEW CODE!!
+    public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass)
+    {
+        boolean airlineNotFound = true;
+        for (int i = 0; i < airline.size(); i++) {
+            if (airline.get(i).getName().equals(air)) {
+                airlineNotFound = false;
+                airline.get(i).addSection(flID, rows, cols, seatClass);
+            }
+        }
+            if (airlineNotFound) System.out.println("ERROR: Airline "
+                    + air + " not found");
+     }
 
-    //Creates a FlightSection
+    public void bookSeat(String air, String fl, SeatClass sc, int row, char col) {
+        boolean airlineNotFound = true;
+        for (int i = 0; i < airline.size(); i++) {
+            if (airline.get(i).getName().equals(air)) {
+                airlineNotFound = false;
+                airline.get(i).bookSeat(fl, sc, row, col);
+            }
+        }
+        if (airlineNotFound) System.out.println("ERROR: Airline "
+                + air + " not found");
+    }
+
+    public void displaySystemDetails()
+    {
+        System.out.println("\nAirports:");
+        for (int i = 0; i < airport.size(); i++)
+            System.out.println(airport.get(i));
+        System.out.println("\nAirlines:");
+        for (int i = 0; i < airline.size(); i++)
+            System.out.println(airline.get(i));
+//        System.out.println("\nFlights:");
+//        for (int i = 0; i < flight.size(); i++)
+//            System.out.println(flight.get(i));
+//        System.out.println("\nSections:");
+//        for (int i = 0; i < flight.size(); i++)
+//            flight.get(i).output();
+    }
+
+    /*
     public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass){
         //check that airline array isn't empty and there's at least one row/seat
         if(airline.isEmpty() == true){
@@ -117,6 +154,8 @@ public class SystemManager
         if (airlineNotFound) System.out.println("ERROR: Airline " +
                 air + " not found");
     }
+*/
+    /*
 
     public void checkDepartureStatus(String flID){
         boolean flightNotFound = true;
@@ -151,22 +190,9 @@ public class SystemManager
             System.out.println("No flight is available.");
     }
 
+    */
 
-    public void displaySystemDetails()
-    {
-        System.out.println("\nAirports:");
-        for (int i = 0; i < airport.size(); i++)
-            System.out.println(airport.get(i));
-        System.out.println("\nAirlines:");
-        for (int i = 0; i < airline.size(); i++)
-            System.out.println(airline.get(i));
-        System.out.println("\nFlights:");
-        for (int i = 0; i < flight.size(); i++)
-            System.out.println(flight.get(i));
-        System.out.println("\nSections:");
-        for (int i = 0; i < flight.size(); i++)
-            flight.get(i).output();
-    }
+
     /*
     DEPRECATED CODE:
     //create seat

@@ -92,7 +92,7 @@ public class ClientProg
 
 //display system details and check available flights
         System.out.println("SECTION 2");
-        res.displaySystemDetails();
+//        res.displaySystemDetails();
 //        res.findAvailableFlights("DEN", "LON");
 
 
@@ -111,7 +111,7 @@ public class ClientProg
         res.displaySystemDetails();
 //        res.findAvailableFlights("DEN", "LON");
 
-        res.checkDepartureStatus("123");
+//        res.checkDepartureStatus("123");
     }
 }
 

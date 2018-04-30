@@ -5,66 +5,55 @@ import java.util.ArrayList;
 public class Airline extends Company
 {
     private String name;
-    private ArrayList<Flight> flight;
+    private ArrayList<Flight> flights;
 
     //constructor
-    public Airline(String n)
-    {
+    public Airline(String n) {
         name = n;
+        flights = new ArrayList<>();
     }
 
+    public void addFlight(String orig, String dest, int year, int month, int day, String flightId){
+        // need to add validator for the code string - Alphanumeric characters, flight al
+        boolean flightAlreadyExists = true;
+        for(int i=0; i < flights.size(); i++){
+            if(flights.get(i).getId().equals(flightId)){
+                flightAlreadyExists = false;
+                flights.add(new Flight(orig, dest, year, month, day, flightId));
+            }
+        }
+        if (flightAlreadyExists) System.out.println("ERROR: Flight "
+                + flightId + " already exists");
+    }
 
-    // NEW CODE !!!!
     //Adds a new FlightSection to a Flight
-    public void addSection(String fid, int rows, int cols, SeatClass seatClass){
-        if(false){
-            System.out.println("ERROR: There are no flights "
-                    + "associated with this Airline");
-        } else{
-            for(int i = 0; i < flight.size(); i++){
-                if(flight.get(i).getId().equals(fid)){
-                    if (flight.get(i).checkSectionExists(seatClass)){
-                        System.out.println("ERROR: There is already a " + seatClass
-                                + " section associated with this flight");
-                    } else {
-                        flight.get(i).addSection(rows, cols, seatClass);
-                    }
-                }
+    public void addSection(String flightId, int rows, int cols, SeatClass seatClass) {
+        boolean flightNotFound = true;
+        for (int i = 0; i < flights.size(); i++) {
+            if (flights.get(i).getId().equals(flightId)) {
+                flightNotFound = false;
+                flights.get(i).addSection(rows, cols, seatClass);
             }
         }
+        if (flightNotFound) System.out.println("ERROR: Flight "
+                + flightId + " not found");
     }
-/*
-    public void addSection(String fid, int rows, String seatClass){
-        if(flight.isEmpty() == true){
-            System.out.println("ERROR: There are no flights "
-                    + "associated with this Airline");
-        } else{
-            for(int i = 0; i < flight.size(); i++){
-                if(flight.get(i).getId().equals(fid)){
-                    // Needs updated parameters
-                    if (flight.get(i).checkSectionExists(seatClass) < 0){
-                        flight.get(i).addSection(rows, seatClass);
-                    }
-                }
+
+    // refactor code so that flightNotFound is can be reused across two methods
+    //Books a seat in a Flight
+    public void bookSeat(String flightId, SeatClass seatClass, int row, char col) {
+        boolean flightNotFound = true;
+        for (int i = 0; i < flights.size(); i++) {
+            if (flights.get(i).getId().equals(flightId)) {
+                flightNotFound = false;
+                flights.get(i).bookSeat(seatClass, row, col);
             }
         }
+        if (flightNotFound) System.out.println("ERROR: Flight "
+                + flightId + " not found");
     }
-*/
-
-
-    // NEW CODE ENDS!!!!
     //get and set name
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String n)
-    {
-        name = n;
-    }
-
-    public String toString()
-    {
-        return "Airline Name: "+name;
-    }
+    public String getName() { return name; }
+    public void setName(String n) {name = n;}
+    public String toString() { return "Airline Name: "+name; }
 }

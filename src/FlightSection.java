@@ -31,7 +31,7 @@ public class FlightSection {
     public void bookSeat(int row, char col){
         int column;
         column = (Character.getNumericValue(col) - 10);
-        if (seatArray[row-1][column].getStatus() == false) {
+        if (seatArray[row-1][column].getStatus()) {
             seatArray[row-1][column].setStatus();
             System.out.println("Seat booked at " + row + col);
         } else {
@@ -50,11 +50,11 @@ public class FlightSection {
         return false;
     }
 
-    SeatClass getSeatClass() { return seatClass; }
+    public SeatClass getSeatClass() { return seatClass; }
 
-    int getNumRows() { return tRows; }
+    public int getNumRows() { return tRows; }
 
-    int getNumCols() { return tCols; }
+    public int getNumCols() { return tCols; }
 /*
     // Returns total number of available seats
     public int numOfFreeSeats(){
