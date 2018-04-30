@@ -10,7 +10,7 @@ public class FlightSection {
     private int tCol = 10;  // 10 Max
 
     //constructor
-    public FlightSection (int rows, SeatClass seatClass){
+    public FlightSection (int rows, int cols, SeatClass seatClass){
         this.seatClass = seatClass;
 
         if (1 <= rows && rows <= maxRows)

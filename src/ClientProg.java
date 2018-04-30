@@ -81,8 +81,8 @@ public class ClientProg
 //Create sections
 //        res.createSection("AC","3867", 2, "business");
 //        res.createSection("DELTA","123", 5, "economy");
-        res.createSection("JET","123", 1, SeatClass.economy);
-        res.createSection("JET","123", 1, SeatClass.economy);
+        res.createSection("JET","123", 1, 6, SeatClass.economy);
+        res.createSection("JET","123", 1, 6, SeatClass.economy);
 //        res.createSection("JET","123", 2, "first");
 //        res.createSection("DELTA","123", 1, "business");
 //        res.createSection("DELTA","123", 1, 2, SeatClass.economy);

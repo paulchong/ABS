@@ -75,7 +75,7 @@ public class SystemManager
     // THIS IS NEW CODE!!
 
     //Creates a FlightSection
-    public void createSection(String air, String flID, int rows, SeatClass seatClass){
+    public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass){
         //check that airline array isn't empty and there's at least one row/seat
         if(airline.isEmpty() == true && rows < 0){
             System.out.println("ERROR:"+"Cannot add a section, airline does not exist or at least one row must be added");
@@ -93,7 +93,7 @@ public class SystemManager
                         System.out.println("Error: Section " + seatClass + " already exists for flight " + flID);
                     }
                     else {
-                        flight.get(i).addSection(rows, seatClass);
+                        flight.get(i).addSection(rows, cols, seatClass);
                     }
                 }
                 else {

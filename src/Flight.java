@@ -108,8 +108,8 @@ public class Flight extends Transport
     }
 
     // NEW CODE !!!!
-    public void addSection(int rows, SeatClass seatClass){
-        Sections.add(new FlightSection(rows, seatClass));
+    public void addSection(int rows, int cols, SeatClass seatClass){
+        Sections.add(new FlightSection(rows, cols, seatClass));
     }
 
     public boolean checkSectionExists (SeatClass sc){
