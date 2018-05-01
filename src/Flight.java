@@ -92,6 +92,17 @@ public class Flight extends Transport
                 + seatClass + " not found");
     }
 
+    // Returns true if section has at least one seat available, otherwise returns false
+    public boolean hasAvailableSeats(){
+        boolean output = false;
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).hasAvailableSeats()){
+                output = true;
+            }
+        }
+        return output;
+    }
+
     public String getDepartureStatus(){
 
         Calendar today = Calendar.getInstance();

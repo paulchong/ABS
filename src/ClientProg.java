@@ -37,7 +37,7 @@ public class ClientProg {
         res.createSection("DELTA","123", 1, 2, SeatClass.economy);
         res.createSection("SWSERTT","123", 5, 5, SeatClass.economy); // invalid
         res.displaySystemDetails();
-//        res.findAvailableFlights("DEN", "LON");
+        res.findAvailableFlights("DEN", "LON");
         res.bookSeat("DELTA", "123", SeatClass.business, 1, 'A');
         res.bookSeat("DELTA", "123", SeatClass.economy, 1, 'A');
         res.bookSeat("DELTA", "123", SeatClass.economy, 1, 'B');

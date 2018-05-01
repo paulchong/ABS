@@ -52,6 +52,22 @@ public class Airline extends Company
         if (flightNotFound) System.out.println("ERROR: Flight "
                 + flightId + " not found");
     }
+
+    // Returns true if section has at least one seat available, otherwise returns false
+    public void hasAvailableSeats(String orig, String dest){
+        String output = "";
+        for(int i=0; i < flights.size(); i++){
+            if (flights.get(i).getOrig()== orig && flights.get(i).getDest() == dest){
+                if (flights.get(i).hasAvailableSeats()){
+                    output = output + flights.get(i).getId() + " ";
+                    System.out.println(output);
+                }
+            }
+        }
+//        System.out.println(output);
+//        return output;
+    }
+
     //get and set name
     public String getName() { return name; }
     public void setName(String n) {name = n;}

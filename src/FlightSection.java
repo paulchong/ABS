@@ -44,7 +44,11 @@ public class FlightSection {
     public boolean hasAvailableSeats(){
         for (int i = 0; i < tRows; i++){
             for (int j = 0; j < tCols; j++){
-                if (seatArray[i][j].getStatus()) return true;
+                if (!seatArray[i][j].getStatus()) {
+//                    System.out.println("true!");
+                    return true;
+                }
+
             }
         }
         return false;

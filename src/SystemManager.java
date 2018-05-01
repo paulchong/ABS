@@ -111,6 +111,17 @@ public class SystemManager
 //            flight.get(i).output();
     }
 
+    public void findAvailableFlights(String orig, String dest){
+        String output = "";
+        System.out.println("\nThe following flights from " + orig + " to " + dest + " have seats available:");
+        for(int i=0; i<airline.size(); i++) {
+            airline.get(i).hasAvailableSeats(orig, dest);
+            System.out.println(airline.get(i).getName() + " " + " \n");
+        }
+//            output = output + airline.get(i).getName() + " " + airline.get(i).hasAvailableSeats(orig, dest) + " \n";
+//        System.out.println(output);
+    }
+
     // NEED TO REFACTOR THIS.
     //find flight
 //    public void findAvailableFlights(String orig, String dest)
