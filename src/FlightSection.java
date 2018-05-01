@@ -45,10 +45,8 @@ public class FlightSection {
         for (int i = 0; i < tRows; i++){
             for (int j = 0; j < tCols; j++){
                 if (!seatArray[i][j].getStatus()) {
-//                    System.out.println("true!");
                     return true;
                 }
-
             }
         }
         return false;
@@ -59,7 +57,8 @@ public class FlightSection {
     public int getNumRows() { return tRows; }
 
     public int getNumCols() { return tCols; }
-/*
+
+    /*
     // Returns total number of available seats
     public int numOfFreeSeats(){
         int total = 0;

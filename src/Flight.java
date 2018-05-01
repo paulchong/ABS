@@ -140,30 +140,8 @@ public class Flight extends Transport
         System.out.println(""); //will say if there are seats available or not
     }
 
-    // don't need this any more
-    public boolean checkSectionExists (SeatClass sc){
-        // Returns -1 if section does not exist
-        for (int i = 0; i < sections.size(); i++){
-            SeatClass temp = sections.get(i).getSeatClass();
-            if (temp.equals(sc))
-                return true;
-        }
-        return false;
-    }
     /*
     DEPRECATED CODE
-
-    public void bookSeat(int row, char col)
-    {
-        if (row > seat.length || col > 70 || col < 65)
-            System.out.printf("Seat (%d,%c) is invaild.\n",row,col);
-        else{
-            if(!seat[row-1][(int)col - 65].getStatus())
-                seat[row-1][(int)col - 65].setStatus();
-            else
-                System.out.printf("Seat (%d,%c) has been reserved.\n",row,col);
-        }
-    }
 
     public String toString(){
         String seats = "";
