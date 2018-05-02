@@ -58,6 +58,18 @@ public class FlightSection {
 
     public int getNumCols() { return tCols; }
 
+    public boolean checkSeatStatus(int row, char col) {
+        for (int i = 0; i < tRows; i++){
+            for (int j = 0; j < tCols; j++){
+                if(seatArray[i][j].getRow() == row-1 && seatArray[i][j].getCol() == col) {
+                    return seatArray[i][j].getStatus();
+                }
+            }
+        }
+        System.out.println("Seat not found");
+        return false;
+    }
+
     /*
     // Returns total number of available seats
     public int numOfFreeSeats(){
