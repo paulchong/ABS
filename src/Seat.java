@@ -20,5 +20,5 @@ public class Seat
     public int getRow() { return row; }
     public char getCol() { return col; }
     public boolean getStatus() { return status; }
-    public String toString() { return "" + row + col; }
+    public String toString() { return "Seat: " + row + col; }
 }
