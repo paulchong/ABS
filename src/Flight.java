@@ -103,11 +103,20 @@ public class Flight extends Transport
         return output;
     }
 
-    public String getDepartureStatus(){
 
+    public boolean checkSeatStatus(int rows, char cols, SeatClass seatClass) {
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).getSeatClass().equals(seatClass)){
+                return sections.get(i).checkSeatStatus(rows, cols);
+            }
+        }
+        System.out.println("Seat not found");
+        return false;
+    }
+
+    public String getDepartureStatus(){
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 0);
-
         if (today.after(departure)){
             departureStatus = "departed";
         } else {
@@ -116,47 +125,7 @@ public class Flight extends Transport
         return departureStatus;
     }
 
-    public Calendar getDeparture(){
-        return departure;
-    }
-
-
     public String toString(){
-        return "";
+        return "Flight " + id + " from " + orig + " to " + dest + " on the date " + month + "." + day + "." + year;
     }
-
-
-    // consider deleting or refactoring to remove excess.
-    public void output(){
-        System.out.println("     Flight " + id + " from "
-                +orig+" to "+ dest +" on the date "+month+"."
-                +day+"."+year+" Seats available: ");
-        for (int i = 0; i < sections.size(); i++){
-            int totalSeats = (sections.get(i).getNumCols() *
-                    (sections.get(i).getNumRows()));
-            System.out.println("          "+sections.get(i).getSeatClass() + " class has available seats: "
-                    + sections.get(i).hasAvailableSeats());
-        }
-        System.out.println(""); //will say if there are seats available or not
-    }
-
-    /*
-    DEPRECATED CODE
-
-    public String toString(){
-        String seats = "";
-        if (seat != null){
-            for (int i = 0; i < seat.length; i++)
-                for (int j = 0; j < seat[i].length; j++)
-                    if (seat[i][j].getStatus())
-                        seats += seat[i][j].toString()+"\t";
-        }
-        else
-            seats = "None";
-        if (seats.equals(""))
-            seats = "Not reserved";
-        return "Airline: "+line+" Flight ID: "+id+" Originating Airport: "+orig+" Destination Airpot: "+dest+" Reserved seat: "+seats;
-    }
-     */
-
 }

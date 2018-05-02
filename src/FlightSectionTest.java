@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FlightSectionTest {
     private FlightSection section;
-    private Seat[][] seatArray;
 
     @BeforeEach
     void setUp() {
