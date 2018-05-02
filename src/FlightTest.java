@@ -9,7 +9,7 @@ class FlightTest {
 
     @BeforeEach
     void setUp() {
-        flight= new Flight("DEN", "LON", 2018, 5, 21, "321");
+        flight = new Flight("DEN", "LON", 2018, 5, 21, "321");
     }
 
     @Test

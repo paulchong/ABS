@@ -54,14 +54,26 @@ public class Airline extends Company
     }
 
     // Returns true if section has at least one seat available, otherwise returns false
-    public void hasAvailableSeats(String orig, String dest){
+    public boolean hasAvailableSeats(String orig, String dest){
         for(int i=0; i < flights.size(); i++){
             if (flights.get(i).getOrig()== orig && flights.get(i).getDest() == dest){
                 if (flights.get(i).hasAvailableSeats()){
                     System.out.println(name + " " + flights.get(i).getId());
+                    return true;
                 }
             }
         }
+        return false;
+    }
+
+    public boolean checkSeatStatus(String flightId, int rows, char cols, SeatClass seatClass) {
+        for(int i=0; i < flights.size(); i++){
+            if(flights.get(i).getId().equals(flightId)){
+                return flights.get(i).checkSeatStatus(rows, cols, seatClass);
+            }
+        }
+        System.out.println("Seat not found");
+        return false;
     }
 
     //get and set name
