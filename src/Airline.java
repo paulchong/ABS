@@ -76,6 +76,16 @@ public class Airline extends Company
         return false;
     }
 
+    public boolean checkFlightExists(String flightId) {
+        for(int i=0; i < flights.size(); i++){
+            if(flights.get(i).getId().equals(flightId)){
+                return true;
+            }
+        }
+        System.out.println("Flight not found");
+        return false;
+    }
+
     //get and set name
     public String getName() { return name; }
     public void setName(String n) {name = n;}

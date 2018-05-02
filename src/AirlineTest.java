@@ -14,6 +14,9 @@ class AirlineTest {
 
     @Test
     void addFlight() {
+        Assert.assertEquals("Check Flight Exists", false, airline.checkFlightExists("321"));
+        airline.addFlight("DEN","LON",2018,5,21,"321");
+        Assert.assertEquals("Check Flight Exists", true, airline.checkFlightExists("321"));
     }
 
     @Test
@@ -43,6 +46,13 @@ class AirlineTest {
         Assert.assertEquals("Has Available Seat", true, airline.hasAvailableSeats("DEN","LON"));
         airline.bookSeat("321",SeatClass.economy,1,'A');
         Assert.assertEquals("Has Available Seat", false, airline.hasAvailableSeats("DEN","LON"));
+    }
+
+    @Test
+    void checkFlightExists() {
+        Assert.assertEquals("Check Flight Exists", false, airline.checkFlightExists("321"));
+        airline.addFlight("DEN","LON",2018,5,21,"321");
+        Assert.assertEquals("Check Flight Exists", true, airline.checkFlightExists("321"));
     }
 
     @Test
