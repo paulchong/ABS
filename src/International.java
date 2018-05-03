@@ -1,12 +1,10 @@
-public class International<E> extends Transport {
+public class International<E> {
     private String passportNumber;
     private E transportType;
-    private String departureStatus;
 
-    public International(E transportType, String passportNumber, String departureStatus) {
+    public International(E transportType, String passportNumber) {
         this.passportNumber = passportNumber;
         this.transportType = transportType;
-        this.departureStatus = departureStatus;
     }
 
     public String getPassport()
@@ -19,11 +17,6 @@ public class International<E> extends Transport {
     }
     public E getTransportType() {
         return transportType ;
-    }
-
-    @Override
-    public String getDepartureStatus(){
-        return departureStatus;
     }
 
 }

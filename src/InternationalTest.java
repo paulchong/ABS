@@ -13,10 +13,10 @@ class InternationalTest {
     @BeforeEach
     void setUp() {
         flight = new Flight("DEN", "LON", 2018, 5, 21, "321");
-        intFlight = new International<>(flight, "AA1042133", "departed");
+        intFlight = new International<>(flight, "AA1042133");
 
         train = new Train("DEN", "LON", 2018, 5, 21, "321");
-        intTrain = new International<>(train, "AA1042133", "departed");
+        intTrain = new International<>(train, "AA1042133");
     }
 
     @Test
@@ -32,9 +32,5 @@ class InternationalTest {
     void getTransportType() {
         Assert.assertEquals("Get Transport type", flight, intFlight.getTransportType());
         Assert.assertEquals("Get Transport type", train, intTrain.getTransportType());
-    }
-
-    @Test
-    void getDepartureStatus() {
     }
 }
