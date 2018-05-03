@@ -57,13 +57,13 @@ class AirlineTest {
 
     @Test
     void getName() {
-        Assert.assertEquals("Get Name", "Airline: NZL", airline.getName());
+        Assert.assertEquals("Get Name", "NZL", airline.getName());
     }
 
     @Test
     void setName() {
         airline.setName("QFA");
-        Assert.assertEquals("Get Name", "Airline: QFA", airline.getName());
+        Assert.assertEquals("Get Name", "QFA", airline.getName());
     }
 
     @Test

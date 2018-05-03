@@ -14,7 +14,6 @@ public class Airline extends Company
     }
 
     public void addFlight(String orig, String dest, int year, int month, int day, String flightId){
-        // TO DO: need to add validator for the code string - Alphanumeric characters, flight al
         boolean flightNotFound = true;
         for(int i=0; i < flights.size(); i++){
             if(flights.get(i).getId().equals(flightId)){
@@ -39,7 +38,6 @@ public class Airline extends Company
                 + flightId + " not found");
     }
 
-    // refactor code so that flightNotFound is can be reused across two methods
     //Books a seat in a Flight
     public void bookSeat(String flightId, SeatClass seatClass, int row, char col) {
         boolean flightNotFound = true;
@@ -88,7 +86,7 @@ public class Airline extends Company
 
     //get and set name
     @Override
-    public String getName() { return "Airline: " + name; }
+    public String getName() { return name; }
 
     public void setName(String n) {name = n;}
     public String toString() { return "Airline Code is: "+name; }

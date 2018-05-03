@@ -39,15 +39,16 @@ public class SystemManager
         if (length>=6)//check pattern
             System.out.printf("The name of airline %s should have less than 6 characters.\n",n);
 
-        else{
-            if(airline.size() != 0)//check if already been contained
-                for(int i=0; i<airline.size()&& check; i++)
-                    if(airline.get(i).getName() == n){
-                        System.out.printf("The Airline %s has already been created.\n",n);
+        else {
+            if (airline.size() != 0)//check if already been contained
+                for (int i = 0; i < airline.size() && check; i++)
+                    if (airline.get(i).getName() == n) {
+                        System.out.printf("The Airline %s has already been created.\n", n);
                         check = false;
                     }
             if(check)
                 airline.add(new Airline(n));
+
 
         }
     }
@@ -66,7 +67,7 @@ public class SystemManager
 //                    System.out.println("Flight " + aname + id + " " + orig + dest + " created: \n");
                 }
             }
-            if (airlineNotFound) System.out.println("ERROR: Airline "
+            if (airlineNotFound) System.out.println("FLIGHT ERROR: Airline "
                     + aname + " not found");
         }
     }
@@ -81,7 +82,7 @@ public class SystemManager
 //                System.out.println("Section " + seatClass + air + flID + " created: \n");
             }
         }
-            if (airlineNotFound) System.out.println("ERROR: Airline "
+            if (airlineNotFound) System.out.println("SECTION ERROR: Airline "
                     + air + " not found");
      }
 
