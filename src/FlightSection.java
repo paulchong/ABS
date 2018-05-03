@@ -6,6 +6,7 @@ public class FlightSection {
     private final int maxCols = 10; //  Maximum number of columns
     private int tRows;
     private int tCols;
+    private String seatPreference;  // Window or Aisle
 
     //constructor
     public FlightSection (int rows, int cols, SeatClass seatClass){
@@ -70,17 +71,17 @@ public class FlightSection {
         return false;
     }
 
-    /*
-    // Returns total number of available seats
-    public int numOfFreeSeats(){
-        int total = 0;
-        for (int i = 0; i < tRows; i++){
-            for (int j = 0; j < tCols; j++){
-                if (seatArray[i][j].getStatus() == false) total++;
-            }
+    // Books seat with Window/Aisle Preference
+    public void bookSeat(int row, char col, String seatPref){
+        int column;
+        seatPreference = seatPref;
+        column = (Character.getNumericValue(col) - 10);
+        if (seatArray[row-1][column].getStatus()) {
+            System.out.println("ERROR: Seat at " + row + " " + col +
+                    " is already booked");
+        } else {
+            seatArray[row-1][column].setStatus();
+            System.out.println("Seat booked at " + row + col);
         }
-        return total;
     }
-*/
-
 }

@@ -87,7 +87,9 @@ public class Airline extends Company
     }
 
     //get and set name
-    public String getName() { return name; }
+    @Override
+    public String getName() { return "Airline: " + name; }
+
     public void setName(String n) {name = n;}
-    public String toString() { return "Airline Name: "+name; }
+    public String toString() { return "Airline Code is: "+name; }
 }
