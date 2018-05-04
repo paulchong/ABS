@@ -38,7 +38,6 @@ public class SystemManager
         boolean check = true;
         if (length>=6)//check pattern
             System.out.printf("The name of airline %s should have less than 6 characters.\n",n);
-
         else {
             if (airline.size() != 0)//check if already been contained
                 for (int i = 0; i < airline.size() && check; i++)
@@ -48,8 +47,6 @@ public class SystemManager
                     }
             if(check)
                 airline.add(new Airline(n));
-
-
         }
     }
 
@@ -109,7 +106,6 @@ public class SystemManager
     }
 
     public void findAvailableFlights(String orig, String dest){
-        String output = "";
         System.out.println("\nThe following flights from " + orig + " to " + dest + " have seats available:");
         for(int i=0; i<airline.size(); i++) {
             airline.get(i).hasAvailableSeats(orig, dest);

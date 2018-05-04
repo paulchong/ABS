@@ -1,6 +1,4 @@
-
-public class Seat
-{
+public class Seat {
 
     private boolean status; //whether seat is booked (true) or not (false)
     private int row;

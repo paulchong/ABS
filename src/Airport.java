@@ -1,4 +1,3 @@
-//Airport.java
 public class Airport implements Facilities {
     private String name;
     private String longitude;
@@ -37,9 +36,5 @@ public class Airport implements Facilities {
     public String getLocation(){
         return longitude + " " + latitude;
     }
-
-    public String toString()
-    {
-        return "Airport Name: "+name;
-    }
+    public String toString() { return "Airport Name: "+name; }
 }

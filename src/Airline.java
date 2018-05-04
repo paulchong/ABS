@@ -1,6 +1,4 @@
-//Airline.java
 import java.util.ArrayList;
-
 
 public class Airline extends Company
 {
