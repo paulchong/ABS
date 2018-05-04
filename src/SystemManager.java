@@ -5,28 +5,26 @@ public class SystemManager
     private ArrayList<Airport> airport;
     private ArrayList<Airline> airline;
 
-    public SystemManager()
-    {
-        airport = new ArrayList <Airport>();
-        airline = new ArrayList <Airline>();
+    public SystemManager() {
+        airport = new ArrayList<>();
+        airline = new ArrayList<>();
     }
 
     //create Airport
     public void createAirport(String n)
     {
-        boolean check = true;
-        String pattern = "[a-zA-Z][a-zA-Z][a-zA-Z]";
-        if (!n.matches(pattern)) //check pattern
-            System.out.printf("The name of airport %s should be only three alphabetic characters.\n", n);
-
+        boolean validate = true;
+        String nameFormat;
+        nameFormat = "[a-zA-Z][a-zA-Z][a-zA-Z]";
+        if (!n.matches(nameFormat))
+            System.out.println("Airport names should only have three alphabet characters.");
         else{
-            if(airport.size() != 0)//check if already been contained
-                for(int i=0; i<airport.size()&& check; i++)
-                    if(airport.get(i).getName()== n){
-                        System.out.printf("The Airport %s has already been created.\n",n);
-                        check = false;
-                    }
-            if(check)
+             for(int i=0; i<airport.size() && validate; i++)
+                 if(airport.get(i).getName().equals(n)){
+                    System.out.println("The Airport " + n + " has already been created.");
+                    validate = false;
+                 }
+            if(validate)
                 airport.add(new Airport(n));
         }
     }

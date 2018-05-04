@@ -86,6 +86,11 @@ public class Airline extends Company
     @Override
     public String getName() { return name; }
 
-    public void setName(String n) {name = n;}
+    public void setName(String n) {
+        if (n.length() > 6)
+            throw new IllegalArgumentException
+                    ("Airline name must be less than 6 characters long.");
+        else name = n;
+    }
     public String toString() { return "Airline Code is: "+name; }
 }
