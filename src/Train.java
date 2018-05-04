@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Train extends Transport {
@@ -9,7 +8,6 @@ public class Train extends Transport {
     private int day;
     private Calendar departure;
     private String departureStatus;
-    private String fuel;
 
     //constructor
     public Train(String orig, String dest, int year, int month, int day, String trainId){

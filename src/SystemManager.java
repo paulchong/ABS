@@ -106,12 +106,6 @@ public class SystemManager
         System.out.println("\nAirlines:");
         for (int i = 0; i < airline.size(); i++)
             System.out.println(airline.get(i));
-//        System.out.println("\nFlights:");
-//        for (int i = 0; i < flight.size(); i++)
-//            System.out.println(flight.get(i));
-//        System.out.println("\nSections:");
-//        for (int i = 0; i < flight.size(); i++)
-//            flight.get(i).output();
     }
 
     public void findAvailableFlights(String orig, String dest){

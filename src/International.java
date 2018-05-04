@@ -1,10 +1,11 @@
 public class International<E> {
-    private String passportNumber;
     private E transportType;
+    private String passportNumber;
+
 
     public International(E transportType, String passportNumber) {
-        this.passportNumber = passportNumber;
         this.transportType = transportType;
+        this.passportNumber = passportNumber;
     }
 
     public String getPassport()
