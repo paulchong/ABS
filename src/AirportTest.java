@@ -5,13 +5,7 @@ class AirportTest {
     private Airport airport;
 
     @org.junit.jupiter.api.BeforeEach
-    void setUp() {
-        airport = new Airport("ABC", "10E", "46N" );
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-    }
+    void setUp() { airport = new Airport("ABC", "10E", "46N" ); }
 
     @org.junit.jupiter.api.Test
     void getName() {

@@ -1,10 +1,6 @@
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sun.swing.SwingUtilities2;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FlightSectionTest {
     private FlightSection section;
@@ -12,11 +8,6 @@ class FlightSectionTest {
     @BeforeEach
     void setUp() {
         section = new FlightSection(1, 2, SeatClass.economy);
-
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
@@ -32,7 +23,6 @@ class FlightSectionTest {
         section.bookSeat(1, 'A');
         section.bookSeat(1, 'B');
         Assert.assertEquals("Has Available Seat", false, section.hasAvailableSeats());
-
     }
 
     @Test
