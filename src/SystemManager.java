@@ -10,9 +10,8 @@ public class SystemManager
         airline = new ArrayList<>();
     }
 
-    //create Airport
-    public void createAirport(String n)
-    {
+    //creates an Airport
+    public void createAirport(String n) {
         boolean validate = true;
         String nameFormat;
         nameFormat = "[a-zA-Z][a-zA-Z][a-zA-Z]";
@@ -29,9 +28,8 @@ public class SystemManager
         }
     }
 
-    //create Airline
-    public void createAirline(String n)
-    {
+    //creates an Airline
+    public void createAirline(String n) {
         boolean validate = true;
         if (n.length()>5)
             System.out.println("Airline names should have less than 6 characters.");
@@ -46,18 +44,19 @@ public class SystemManager
         }
     }
 
-    //create flight
-    public void createFlight(String aname, String orig, String dest, int year, int month, int day, String id)
-    {
-        if(orig == dest){
-            System.out.printf("The originating and destination airport %s cannot be the same.\n",orig);
+    //creates a flight
+    public void createFlight(String aname, String orig, String dest, int year, int month, int day, String id) {
+        String nameFormat = "^[a-zA-Z0-9]*$";
+        if (!id.matches(nameFormat))
+            System.out.println("Flight ID must be Alphanumeric characters.");
+        else if(orig.equals(dest)){
+            System.out.println("Origin and destination airports cannot be the same.");
         } else {
             boolean airlineNotFound = true;
             for (int i = 0; i < airline.size(); i++) {
                 if (airline.get(i).getName().equals(aname)) {
                     airlineNotFound = false;
                     airline.get(i).addFlight(orig, dest, year, month, day, id);
-//                    System.out.println("Flight " + aname + id + " " + orig + dest + " created: \n");
                 }
             }
             if (airlineNotFound) System.out.println("FLIGHT ERROR: Airline "
@@ -65,8 +64,7 @@ public class SystemManager
         }
     }
 
-    public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass)
-    {
+    public void createSection(String air, String flID, int rows, int cols, SeatClass seatClass) {
         boolean airlineNotFound = true;
         for (int i = 0; i < airline.size(); i++) {
             if (airline.get(i).getName().equals(air)) {

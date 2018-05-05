@@ -26,8 +26,70 @@ public class Flight extends Transport
         departure.set(year, month, day, 0, 0);
     }
 
+    public void addSection(int rows, int cols, SeatClass seatClass){
+        boolean classNotFound = true;
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).getSeatClass().equals(seatClass)){
+                System.out.println("ERROR: Section class " + seatClass + " already exists");
+                classNotFound = false;
+            }
+        }
+        if (classNotFound)
+            sections.add(new FlightSection(rows, cols, seatClass));
+    }
+
+    public void bookSeat (SeatClass seatClass, int row, char col){
+        boolean classNotFound = true;
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).getSeatClass().equals(seatClass)){
+                classNotFound = false;
+                sections.get(i).bookSeat(row, col);
+            }
+        }
+        if (classNotFound) System.out.println("ERROR: Section class "
+                + seatClass + " not found");
+    }
+
+    // Returns true if section has at least one seat available, otherwise returns false
+    public boolean hasAvailableSeats(){
+        boolean output = false;
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).hasAvailableSeats()){
+                output = true;
+            }
+        }
+        return output;
+    }
+
+    public boolean checkSeatStatus(int rows, char cols, SeatClass seatClass) {
+        for(int i=0; i < sections.size(); i++){
+            if(sections.get(i).getSeatClass().equals(seatClass)){
+                return sections.get(i).checkSeatStatus(rows, cols);
+            }
+        }
+        System.out.println("Seat not found");
+        return false;
+    }
+
+    public String getDepartureStatus(){
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        if (today.after(departure)){
+            departureStatus = "departed";
+        } else {
+            departureStatus = "scheduled";
+        }
+        return departureStatus;
+    }
+
     //set and get methods
-    public void setID(String id) { this.id = id; }
+    public void setID(String id) {
+        String nameFormat = "^[a-zA-Z0-9]*$";
+        if (!id.matches(nameFormat))
+            throw new IllegalArgumentException
+                    ("Flight ID must be Alphanumeric characters.");
+        else this.id = id;
+    }
     public void setOrig(String o)
     {
         orig = o;
@@ -66,64 +128,6 @@ public class Flight extends Transport
         return month;
     }
     public int getDay() { return day; }
-
-    public void addSection(int rows, int cols, SeatClass seatClass){
-        boolean classNotFound = true;
-        for(int i=0; i < sections.size(); i++){
-            if(sections.get(i).getSeatClass().equals(seatClass)){
-                System.out.println("ERROR: Section class " + seatClass + " already exists");
-                classNotFound = false;
-            }
-        }
-        if (classNotFound)
-            sections.add(new FlightSection(rows, cols, seatClass));
-    }
-
-    public void bookSeat (SeatClass seatClass, int row, char col){
-        boolean classNotFound = true;
-        for(int i=0; i < sections.size(); i++){
-            if(sections.get(i).getSeatClass().equals(seatClass)){
-                classNotFound = false;
-                sections.get(i).bookSeat(row, col);
-            }
-        }
-        if (classNotFound) System.out.println("ERROR: Section class "
-                + seatClass + " not found");
-    }
-
-    // Returns true if section has at least one seat available, otherwise returns false
-    public boolean hasAvailableSeats(){
-        boolean output = false;
-        for(int i=0; i < sections.size(); i++){
-            if(sections.get(i).hasAvailableSeats()){
-                output = true;
-            }
-        }
-        return output;
-    }
-
-
-    public boolean checkSeatStatus(int rows, char cols, SeatClass seatClass) {
-        for(int i=0; i < sections.size(); i++){
-            if(sections.get(i).getSeatClass().equals(seatClass)){
-                return sections.get(i).checkSeatStatus(rows, cols);
-            }
-        }
-        System.out.println("Seat not found");
-        return false;
-    }
-
-    public String getDepartureStatus(){
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        if (today.after(departure)){
-            departureStatus = "departed";
-        } else {
-            departureStatus = "scheduled";
-        }
-        return departureStatus;
-    }
-
     public String toString(){
         return "Flight " + id + " from " + orig + " to " + dest + " on the date " + month + "." + day + "." + year;
     }
