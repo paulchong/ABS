@@ -100,6 +100,5 @@ public class SystemManager
         for(int i=0; i<airline.size(); i++) {
             airline.get(i).hasAvailableSeats(orig, dest);
         }
-        System.out.println("\n");
     }
 }

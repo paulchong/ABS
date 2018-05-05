@@ -5,14 +5,13 @@ public class Seat {
     private char col;
 
     //constructor, booking status set to false by default
-    public Seat(int r, char c)
-    {
+    public Seat(int r, char c) {
         row = r;
         col = c;
         status = false;
     }
 
-    //set and get methods
+    //getter and setter methods
     public void setRow(int row) { this.row = row; }
     public void setCol(char col) { this.col = col; }
     public void setStatus() { status = true; }
