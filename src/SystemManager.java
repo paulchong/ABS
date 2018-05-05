@@ -32,18 +32,16 @@ public class SystemManager
     //create Airline
     public void createAirline(String n)
     {
-        int length = n.length();
-        boolean check = true;
-        if (length>=6)//check pattern
-            System.out.printf("The name of airline %s should have less than 6 characters.\n",n);
+        boolean validate = true;
+        if (n.length()>5)
+            System.out.println("Airline names should have less than 6 characters.");
         else {
-            if (airline.size() != 0)//check if already been contained
-                for (int i = 0; i < airline.size() && check; i++)
-                    if (airline.get(i).getName() == n) {
-                        System.out.printf("The Airline %s has already been created.\n", n);
-                        check = false;
-                    }
-            if(check)
+            for (int i = 0; i < airline.size() && validate; i++)
+                if (airline.get(i).getName().equals(n)) {
+                    System.out.println("The Airline " + n + " has already been created.");
+                    validate = false;
+                }
+            if(validate)
                 airline.add(new Airline(n));
         }
     }

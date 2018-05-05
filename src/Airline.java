@@ -11,6 +11,7 @@ public class Airline extends Company
         flights = new ArrayList<>();
     }
 
+    // adds a new flight
     public void addFlight(String orig, String dest, int year, int month, int day, String flightId){
         boolean flightNotFound = true;
         for(int i=0; i < flights.size(); i++){
@@ -52,7 +53,7 @@ public class Airline extends Company
     // Returns true if section has at least one seat available, otherwise returns false
     public boolean hasAvailableSeats(String orig, String dest){
         for(int i=0; i < flights.size(); i++){
-            if (flights.get(i).getOrig()== orig && flights.get(i).getDest() == dest){
+            if (flights.get(i).getOrig().equals(orig) && flights.get(i).getDest().equals(dest)){
                 if (flights.get(i).hasAvailableSeats()){
                     System.out.println(name + " " + flights.get(i).getId());
                     return true;
