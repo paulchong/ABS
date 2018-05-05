@@ -4,8 +4,8 @@ public class FlightSection {
     private SeatClass seatClass; // first, business or economy
     private final int maxRows = 100; // Maximum number of rows
     private final int maxCols = 10; //  Maximum number of columns
-    private int tRows;
-    private int tCols;
+    private int rows;
+    private int cols;
     private String seatPreference;  // Window or Aisle
 
     //constructor
@@ -13,12 +13,12 @@ public class FlightSection {
         this.seatClass = seatClass;
 
         if (1 <= rows && rows <= maxRows && 1 <= cols && cols <= maxCols) {
-            tRows = rows;
-            tCols = cols;
-            seatArray = new Seat[tRows][tCols];
+            this.rows = rows;
+            this.cols = cols;
+            seatArray = new Seat[rows][cols];
 
-            for (int i = 0; i < tRows; i++){
-                for (int j = 0; j < tCols; j++){
+            for (int i = 0; i < rows; i++){
+                for (int j = 0; j < cols; j++){
                     seatArray[i][j] = new Seat(i, (char)(j + 65));
                 }
             }
@@ -43,8 +43,8 @@ public class FlightSection {
 
     // Returns true if at least one seat is available, otherwise returns false
     public boolean hasAvailableSeats(){
-        for (int i = 0; i < tRows; i++){
-            for (int j = 0; j < tCols; j++){
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < cols; j++){
                 if (!seatArray[i][j].getStatus()) {
                     return true;
                 }
@@ -53,15 +53,9 @@ public class FlightSection {
         return false;
     }
 
-    public SeatClass getSeatClass() { return seatClass; }
-
-    public int getNumRows() { return tRows; }
-
-    public int getNumCols() { return tCols; }
-
     public boolean checkSeatStatus(int row, char col) {
-        for (int i = 0; i < tRows; i++){
-            for (int j = 0; j < tCols; j++){
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < cols; j++){
                 if(seatArray[i][j].getRow() == row-1 && seatArray[i][j].getCol() == col) {
                     return seatArray[i][j].getStatus();
                 }
@@ -70,6 +64,15 @@ public class FlightSection {
         System.out.println("Seat not found");
         return false;
     }
+
+    // Getters and Setters
+    public SeatClass getSeatClass() { return seatClass; }
+
+    public int getNumRows() { return rows; }
+
+    public int getNumCols() { return cols; }
+
+
 
     // Books seat with Window/Aisle Preference
     public void bookSeat(int row, char col, String seatPref){

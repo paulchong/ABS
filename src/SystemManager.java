@@ -59,8 +59,7 @@ public class SystemManager
                     airline.get(i).addFlight(orig, dest, year, month, day, id);
                 }
             }
-            if (airlineNotFound) System.out.println("FLIGHT ERROR: Airline "
-                    + aname + " not found");
+            if (airlineNotFound) System.out.println("FLIGHT ERROR: Airline " + aname + " not found");
         }
     }
 
@@ -70,11 +69,9 @@ public class SystemManager
             if (airline.get(i).getName().equals(air)) {
                 airlineNotFound = false;
                 airline.get(i).addSection(flID, rows, cols, seatClass);
-//                System.out.println("Section " + seatClass + air + flID + " created: \n");
             }
         }
-            if (airlineNotFound) System.out.println("SECTION ERROR: Airline "
-                    + air + " not found");
+            if (airlineNotFound) System.out.println("SECTION ERROR: Airline " + air + " not found");
      }
 
     public void bookSeat(String air, String fl, SeatClass s, int row, char col) {
@@ -85,8 +82,7 @@ public class SystemManager
                 airline.get(i).bookSeat(fl, s, row, col);
             }
         }
-        if (airlineNotFound) System.out.println("ERROR: Airline "
-                + air + " not found");
+        if (airlineNotFound) System.out.println("ERROR: Airline " + air + " not found");
     }
 
     public void displaySystemDetails()
